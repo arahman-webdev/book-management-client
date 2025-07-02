@@ -16,13 +16,13 @@ const Navbar = () => {
     { label: "Add Book", path: "/add-book" },
     { label: "Borrow Summary", path: "/borrow-summary" },
   ];
-
+    // bg-[#0D142C]/
   return (
-    <header className={`w-full   p-4 shadow-md`}>      
+    <header className={`w-full top-0 fixed z-50 left-0 p-4 shadow-md bg-black/10 backdrop-blur-[4px]  `}>      
       <nav className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <div className="text-3xl font-bold">
-          <span className="text-white">Alim</span>
+          <Link to={'/'}>BOOK SHELF</Link>
         </div>
 
         {/* Desktop Menu */}
@@ -41,7 +41,7 @@ const Navbar = () => {
         <div className="flex items-center gap-3">
             <ModeToggle />
 
-          <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md">
+          <button className="bg-[#ff0019] hover:bg-red-700 text-white px-4 py-2 rounded-md">
             Get Started
           </button>
 
