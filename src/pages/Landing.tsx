@@ -1,8 +1,8 @@
-import React from 'react';
+
 
 const Landing = () => {
     return (
-        <div>
+        <div className='bg-[#0D142C]'>
             landing page
         </div>
     );
