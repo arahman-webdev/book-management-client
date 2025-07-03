@@ -3,8 +3,9 @@ import { createBrowserRouter } from "react-router";
 import MainLayout from "../Layout/MainLayout";
 import Landing from "../pages/Landing";
 import AllBooks from "../pages/AllBooks";
-import AddBook from "../pages/AddBook";
+
 import BorrowSummery from "../pages/BorrowSummary";
+import { AddBook } from "@/pages/AddBook";
 
 const router = createBrowserRouter([
     {

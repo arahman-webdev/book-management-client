@@ -1,3 +1,5 @@
+
+import { useGetBooksQuery } from "@/app/baseApi"
 import {
   Table,
   TableBody,
@@ -11,50 +13,76 @@ import {
 
 const invoices = [
   {
-    invoice: "INV001",
-    paymentStatus: "Paid",
-    totalAmount: "$250.00",
-    paymentMethod: "Credit Card",
+    invoice: "Title",
+    paymentStatus: "Author",
+    totalAmount: "Genre",
+    paymentMethod: "ISBN",
+    des: "Description",
+    copies: "Copies",
+
   },
   {
-    invoice: "INV002",
-    paymentStatus: "Pending",
-    totalAmount: "$150.00",
-    paymentMethod: "PayPal",
+    invoice: "Title",
+    paymentStatus: "Author",
+    totalAmount: "Genre",
+    paymentMethod: "ISBN",
+    des: "Description",
+    copies: "Copies",
   },
   {
-    invoice: "INV003",
-    paymentStatus: "Unpaid",
-    totalAmount: "$350.00",
-    paymentMethod: "Bank Transfer",
+    invoice: "Title",
+    paymentStatus: "Author",
+    totalAmount: "Genre",
+    paymentMethod: "ISBN",
+    des: "Description",
+    copies: "Copies",
   },
   {
-    invoice: "INV004",
-    paymentStatus: "Paid",
-    totalAmount: "$450.00",
-    paymentMethod: "Credit Card",
+    invoice: "Title",
+    paymentStatus: "Author",
+    totalAmount: "Genre",
+    paymentMethod: "ISBN",
+    des: "Description",
+    copies: "Copies",
   },
   {
-    invoice: "INV005",
-    paymentStatus: "Paid",
-    totalAmount: "$550.00",
-    paymentMethod: "PayPal",
+    invoice: "Title",
+    paymentStatus: "Author",
+    totalAmount: "Genre",
+    paymentMethod: "ISBN",
+    des: "Description",
+    copies: "Copies",
   },
   {
-    invoice: "INV006",
-    paymentStatus: "Pending",
-    totalAmount: "$200.00",
-    paymentMethod: "Bank Transfer",
+    invoice: "Title",
+    paymentStatus: "Author",
+    totalAmount: "Genre",
+    paymentMethod: "ISBN",
+    des: "Description",
+    copies: "Copies",
   },
   {
-    invoice: "INV007",
-    paymentStatus: "Unpaid",
-    totalAmount: "$300.00",
-    paymentMethod: "Credit Card",
+    invoice: "Title",
+    paymentStatus: "Author",
+    totalAmount: "Genre",
+    paymentMethod: "ISBN",
+    des: "Description",
+    copies: "Copies",
   },
 ]
 
+
+
 export function TableBook() {
+
+  const {data, isLoading} = useGetBooksQuery(undefined)
+
+  console.log({data, isLoading})
+
+  if(isLoading){
+    return <div>loading..............................</div>
+  }
+
   return (
     <Table>
       <TableCaption>A list of your recent invoices.</TableCaption>
@@ -63,7 +91,10 @@ export function TableBook() {
           <TableHead className="w-[100px]">Invoice</TableHead>
           <TableHead>Status</TableHead>
           <TableHead>Method</TableHead>
+          <TableHead>Method</TableHead>
+          <TableHead>Method</TableHead>
           <TableHead className="text-right">Amount</TableHead>
+          <TableHead className="text-center">Action</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -72,14 +103,22 @@ export function TableBook() {
             <TableCell className="font-medium">{invoice.invoice}</TableCell>
             <TableCell>{invoice.paymentStatus}</TableCell>
             <TableCell>{invoice.paymentMethod}</TableCell>
-            <TableCell className="text-right">{invoice.totalAmount}</TableCell>
+            <TableCell>{invoice.paymentMethod}</TableCell>
+            <TableCell>{invoice.paymentMethod}</TableCell>
+            <TableCell className="text-center">{invoice.totalAmount}</TableCell>
+            <TableCell className="text-center">Edit</TableCell>
+            <TableCell>Delete</TableCell>
           </TableRow>
         ))}
       </TableBody>
       <TableFooter>
         <TableRow>
           <TableCell colSpan={3}>Total</TableCell>
-          <TableCell className="text-right">$2,500.00</TableCell>
+          <TableCell className="text-right">
+            {
+              data.data.map(data => <div>{data.title}</div>)
+            }
+          </TableCell>
         </TableRow>
       </TableFooter>
     </Table>
