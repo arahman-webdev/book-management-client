@@ -1,126 +1,74 @@
 
 import { useGetBooksQuery } from "@/app/baseApi"
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableFooter,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
+import { Link } from "react-router"
+import { FaTrash } from "react-icons/fa";
+import { BorrowBook } from "./BorrowBook";
 
-const invoices = [
-  {
-    invoice: "Title",
-    paymentStatus: "Author",
-    totalAmount: "Genre",
-    paymentMethod: "ISBN",
-    des: "Description",
-    copies: "Copies",
-
-  },
-  {
-    invoice: "Title",
-    paymentStatus: "Author",
-    totalAmount: "Genre",
-    paymentMethod: "ISBN",
-    des: "Description",
-    copies: "Copies",
-  },
-  {
-    invoice: "Title",
-    paymentStatus: "Author",
-    totalAmount: "Genre",
-    paymentMethod: "ISBN",
-    des: "Description",
-    copies: "Copies",
-  },
-  {
-    invoice: "Title",
-    paymentStatus: "Author",
-    totalAmount: "Genre",
-    paymentMethod: "ISBN",
-    des: "Description",
-    copies: "Copies",
-  },
-  {
-    invoice: "Title",
-    paymentStatus: "Author",
-    totalAmount: "Genre",
-    paymentMethod: "ISBN",
-    des: "Description",
-    copies: "Copies",
-  },
-  {
-    invoice: "Title",
-    paymentStatus: "Author",
-    totalAmount: "Genre",
-    paymentMethod: "ISBN",
-    des: "Description",
-    copies: "Copies",
-  },
-  {
-    invoice: "Title",
-    paymentStatus: "Author",
-    totalAmount: "Genre",
-    paymentMethod: "ISBN",
-    des: "Description",
-    copies: "Copies",
-  },
-]
 
 
 
 export function TableBook() {
 
-  const {data, isLoading} = useGetBooksQuery(undefined)
+  const { data, isLoading } = useGetBooksQuery(undefined)
 
-  console.log({data, isLoading})
+  console.log({ data, isLoading })
 
-  if(isLoading){
+  if (isLoading) {
     return <div>loading..............................</div>
   }
 
   return (
-    <Table>
-      <TableCaption>A list of your recent invoices.</TableCaption>
-      <TableHeader>
-        <TableRow>
-          <TableHead className="w-[100px]">Invoice</TableHead>
-          <TableHead>Status</TableHead>
-          <TableHead>Method</TableHead>
-          <TableHead>Method</TableHead>
-          <TableHead>Method</TableHead>
-          <TableHead className="text-right">Amount</TableHead>
-          <TableHead className="text-center">Action</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {invoices.map((invoice) => (
-          <TableRow key={invoice.invoice}>
-            <TableCell className="font-medium">{invoice.invoice}</TableCell>
-            <TableCell>{invoice.paymentStatus}</TableCell>
-            <TableCell>{invoice.paymentMethod}</TableCell>
-            <TableCell>{invoice.paymentMethod}</TableCell>
-            <TableCell>{invoice.paymentMethod}</TableCell>
-            <TableCell className="text-center">{invoice.totalAmount}</TableCell>
-            <TableCell className="text-center">Edit</TableCell>
-            <TableCell>Delete</TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-      <TableFooter>
-        <TableRow>
-          <TableCell colSpan={3}>Total</TableCell>
-          <TableCell className="text-right">
-            {
-              data.data.map(data => <div>{data.title}</div>)
-            }
-          </TableCell>
-        </TableRow>
-      </TableFooter>
-    </Table>
+    <div className="p-4 overflow-x-auto">
+      <table className="w-full border-collapse border border-[#28407c]">
+        <thead className="bg-[#12285e]">
+          <tr>
+            <th className="border border-[#28407c] p-2">Ttile</th>
+            <th className="border border-[#28407c] p-2">Author</th>
+            <th className="border border-[#28407c] p-2">Genre</th>
+            <th className="border border-[#28407c] p-2">Isbn</th>
+            <th className="border border-[#28407c] p-2">Copies</th>
+            <th className="border border-[#28407c] p-2">Availability</th>
+            <th className="border border-[#28407c] p-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.data.map((book: any, index: number) => (
+            <tr key={index} className="hover:bg-[#12285e]">
+              <td className="border border-[#28407c] p-2 text-center">
+                {book.title}
+              </td>
+              <td className="border border-[#28407c] p-2 text-center">{book.author}</td>
+              <td className="border border-[#28407c] p-2 text-center">${book.genre}</td>
+              <td className="border border-[#28407c] p-2 text-center">{book.isbn}</td>
+              <td className="border border-[#28407c] p-2 text-center">{book.copies}</td>
+              <td className={`border border-[#28407c] p-2 text-center ${book?.available ? 'text-green-500' : 'text-red-500'}`}>
+                {book?.available ? "Available" : "Unavailable"}
+              </td>
+              <td className="border border-[#28407c] p-2 text-center space-y-2 space-x-3">
+
+                <button
+                  className=" text-red-500 px-3 py-1 rounded hover:bg-red-600 text-center"
+                // onClick={() => handleDelete(book._id)}
+                >
+                  <BorrowBook />
+                </button>
+                <Link
+                  to={`/update/${book._id}`}
+                  className="bg-[#12285e] text-white px-3 py-1 rounded hover:bg-blue-600 text-center"
+                >
+                  Update
+                </Link>
+                <button
+                  className=" text-red-500 px-3 py-1 rounded hover:bg-red-600 text-center"
+                // onClick={() => handleDelete(book._id)}
+                >
+                  <FaTrash />
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   )
 }

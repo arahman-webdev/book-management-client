@@ -1,9 +1,10 @@
+import { TableBook } from "@/providers/TableBook";
 
 
 const AllBooks = () => {
     return (
-        <div>
-            all books
+        <div className="py-24 max-w-7xl mx-auto">
+            <TableBook />
         </div>
     );
 };

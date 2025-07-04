@@ -31,9 +31,6 @@ const Landing = () => {
                 <button></button>
             </div>
             <div>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias id libero voluptatum sequi eos, tempore provident est delectus aut, officia sunt sit vel. Debitis officiis possimus est et perspiciatis laudantium veritatis quos vel! Necessitatibus harum autem distinctio earum, ad repellat, illo error et reiciendis non dolor tempore fugit, consequatur optio! Molestias quisquam rerum placeat illo totam ex quo possimus aliquid, voluptate maiores debitis, sunt, officia voluptatum inventore minima dignissimos eligendi eaque modi ullam explicabo maxime at enim et alias! Tempore ipsam adipisci commodi rem quidem. Porro perferendis possimus quos doloribus temporibus veritatis. Ullam optio nostrum esse debitis explicabo iste commodi.
-            </div>
-            <div>
                 
             </div>
             <div>

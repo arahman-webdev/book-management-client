@@ -1,19 +1,21 @@
-import { Button } from "@/components/ui/button"
+
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { useForm } from "react-hook-form"
 import { Input } from "@/components/ui/input"
 import { useAddBookMutation } from "@/app/baseApi"
 import { useNavigate } from "react-router"
-
+import { Textarea } from "@/components/ui/textarea"
+import Swal from "sweetalert2";
 
 export function AddBook() {
 
 
-    const [createData, { data, isLoading, isError }] = useAddBookMutation()
-    const navigate = useNavigate()
+
+    // const navigate = useNavigate()
     const form = useForm();
-    const { reset } = form;
-    const onSubmit = async(data: any) => {
+    // const { reset } = form;
+    const [createData, { data, isLoading, isError }] = useAddBookMutation()
+    const onSubmit = async (data: any) => {
         try {
             const bookData = {
                 ...data,
@@ -21,14 +23,24 @@ export function AddBook() {
             }
             const response = await createData(bookData).unwrap();
             console.log(response)
-            reset()
-            navigate('/all-books')
+            Swal.fire({
+                title: "Good job!",
+                text: "Succefully added to db!",
+                icon: "success"
+            });
+            // reset()
+            // navigate('/all-books')
         } catch (error) {
             console.log(error)
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Validation failed!",
+            });
         }
     }
 
-    // Title, Author, , , , , Available (optional, defaults to true).
+  
     return (
         <div className="py-20">
             <div className="max-w-3xl mx-auto">
@@ -38,12 +50,12 @@ export function AddBook() {
                         <FormField
                             control={form.control}
                             name="title"
-                            
+
                             render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Title</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="shadcn" {...field} value={field.value || ""} required/>
+                                        <Input placeholder="shadcn" {...field} value={field.value || ""} required />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -56,7 +68,7 @@ export function AddBook() {
                                 <FormItem>
                                     <FormLabel>Author</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="author" {...field} value={field.value || ""} required/>
+                                        <Input placeholder="author" {...field} value={field.value || ""} required />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -69,7 +81,7 @@ export function AddBook() {
                                 <FormItem>
                                     <FormLabel>Genre</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="Genre" {...field} value={field.value || ""} required/>
+                                        <Input placeholder="Genre" {...field} value={field.value || ""} required />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -82,7 +94,7 @@ export function AddBook() {
                                 <FormItem>
                                     <FormLabel>ISBN</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="ISBN" {...field} value={field.value || ""} required/>
+                                        <Input placeholder="ISBN" {...field} value={field.value || ""} required />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -95,7 +107,7 @@ export function AddBook() {
                                 <FormItem>
                                     <FormLabel>Description</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="Description" {...field} value={field.value || ""} />
+                                        <Textarea placeholder="Type your message here." {...field} value={field.value || ""} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -108,7 +120,7 @@ export function AddBook() {
                                 <FormItem>
                                     <FormLabel>Copies</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="Copies" {...field} value={field.value || ""} required/>
+                                        <Input placeholder="Copies" {...field} value={field.value || ""} required />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
