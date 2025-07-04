@@ -47,14 +47,14 @@ export function TableBook() {
               <td className="border border-[#28407c] p-2 text-center space-y-2 space-x-3">
 
                 <button
-                  className=" text-red-500 px-3 py-1 rounded hover:bg-red-600 text-center"
+                  className=" text-red-500 px-3 py-1 rounded  text-center"
                 // onClick={() => handleDelete(book._id)}
                 >
-                  <BorrowBook />
+                  <BorrowBook bookId={book._id} />
                 </button>
-                <Link
-                  to={`/update/${book._id}`}
-                  className="bg-[#12285e] text-white px-3 py-1 rounded hover:bg-blue-600 text-center"
+                <Link to={`/update/${book._id}`}
+                className="bg-[#12285e] text-white px-3 py-1 rounded hover:bg-blue-600 text-center"
+                
                 >
                   Update
                 </Link>

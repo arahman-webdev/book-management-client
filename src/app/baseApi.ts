@@ -13,6 +13,21 @@ export const baseApi = createApi({
                 method: 'POST',
                 body: bookData,
             })
+        }),
+        addBorrowBook: builder.mutation({
+            query: (borrowedData)=>({
+                url: '/api/borrow',
+                method: "POST",
+                body: borrowedData
+            })
+        }),
+
+        updateBook: builder.mutation({
+            query: ({id, ...patch})=>({
+                url: `/api/books/${id}`,
+                method: "PATCH",
+                body: patch
+            })
         })
     }),
 
@@ -21,4 +36,4 @@ export const baseApi = createApi({
 })
 
 
-export const {useGetBooksQuery, useAddBookMutation} = baseApi;
+export const {useGetBooksQuery, useAddBookMutation, useAddBorrowBookMutation, useUpdateBookMutation} = baseApi;

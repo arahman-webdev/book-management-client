@@ -11,10 +11,10 @@ export function AddBook() {
 
 
 
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
     const form = useForm();
-    // const { reset } = form;
-    const [createData, { data, isLoading, isError }] = useAddBookMutation()
+    const { reset } = form;
+    const [createData] = useAddBookMutation()
     const onSubmit = async (data: any) => {
         try {
             const bookData = {
@@ -28,8 +28,8 @@ export function AddBook() {
                 text: "Succefully added to db!",
                 icon: "success"
             });
-            // reset()
-            // navigate('/all-books')
+            reset()
+            navigate('/all-books')
         } catch (error) {
             console.log(error)
             Swal.fire({
