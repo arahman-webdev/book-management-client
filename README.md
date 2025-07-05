@@ -1,4 +1,4 @@
-# Book MANAGEMENT API
+# Book MANAGEMENT UI
 
 # A simple RESTful API for managing a book library system where users can borrow books, track quantity, and get borrow summaries. Built with Node.js, Express.js, and MongoDB using Mongoose.
 
@@ -32,4 +32,7 @@
 
 If you need help or want to connect
 
-Abdur rahman 📧 mdarahman5645@gmail.com 🌍 Sherpur, Bogura, Bangladesh 👨‍💻 GitHub: https://github.com/arahman-webdev
+Abdur rahman 
+📧 mdarahman5645@gmail.com 
+🌍 Sherpur, Bogura, Bangladesh 
+👨‍💻 GitHub: https://github.com/arahman-webdev
