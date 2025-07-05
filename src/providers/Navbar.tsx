@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import { ModeToggle } from "./ModeTogge";
  // Fixed import for React Router DOM
 
@@ -21,7 +21,7 @@ const Navbar = () => {
     <header className={`w-full top-0 fixed z-50 left-0 p-4 shadow-md bg-black/10 backdrop-blur-[4px]  `}>      
       <nav className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
-        <div className="text-3xl font-bold">
+        <div className="text-4xl font-extrabold font-sans">
           <Link to={'/'}>BOOK SHELF</Link>
         </div>
 
@@ -30,9 +30,9 @@ const Navbar = () => {
           {menuItems.map((item, idx) => (
             <li
               key={idx}
-              className="hover:text-red-400 text-white cursor-pointer flex items-center gap-1"
+              className=" text-white cursor-pointer flex items-center gap-1"
             >
-              <Link to={item.path}>{item.label}</Link>
+              <NavLink to={item.path}>{item.label}</NavLink>
             </li>
           ))}
         </ul>

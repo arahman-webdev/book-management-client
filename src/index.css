@@ -56,7 +56,11 @@ a {
   text-decoration: inherit;
 }
 a:hover {
-  color: #e3e4f5;
+  color: #999de9;
+}
+
+a.active{
+  color: #0b49e7;
 }
 
 

@@ -29,10 +29,13 @@ const Landing = () => {
                 <button></button>
             </div>
             <div>
-                
+
             </div>
             <div>
-                <TableBook  />
+                <div className="py-4">
+                    <h1 className="text-center md:text-5xl text-3xl font-bold py-4">All kinds Of Books</h1>
+                </div>
+                <TableBook />
             </div>
         </div>
     );
