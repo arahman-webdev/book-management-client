@@ -55,7 +55,7 @@ export function AddBook() {
                                 <FormItem>
                                     <FormLabel>Title</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="shadcn" {...field} value={field.value || ""} required />
+                                        <Input placeholder="title" {...field} value={field.value || ""} required />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>

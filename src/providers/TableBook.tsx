@@ -74,7 +74,7 @@ export function TableBook() {
                 {book.title}
               </td>
               <td className="border border-[#28407c] p-2 text-center">{book.author}</td>
-              <td className="border border-[#28407c] p-2 text-center">${book.genre}</td>
+              <td className="border border-[#28407c] p-2 text-center">{book.genre}</td>
               <td className="border border-[#28407c] p-2 text-center">{book.isbn}</td>
               <td className="border border-[#28407c] p-2 text-center">{book.copies}</td>
               <td className={`border border-[#28407c] p-2 text-center ${book?.available ? 'text-green-500' : 'text-red-500'}`}>

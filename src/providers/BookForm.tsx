@@ -7,12 +7,15 @@ import { Input } from "@/components/ui/input"
 
 
 
-const BookForm = ({ onSubmit, form, book }) => {
+const BookForm = ({ onSubmit, form, book }: any) => {
 
 
     return (
         <>
             <div className="py-20">
+                <div className="py-4">
+                    <h1 className="text-center md:text-5xl text-3xl font-bold py-4">Update A Book</h1>
+                </div>
                 <div className="max-w-3xl mx-auto">
                     <Form {...form}>
 

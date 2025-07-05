@@ -2,11 +2,13 @@ import { useGetSingleBookQuery, useUpdateBookMutation } from '@/app/baseApi';
 import BookForm from '@/providers/BookForm';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
+import Swal from 'sweetalert2';
 
 const Update = () => {
 
     const form = useForm()
+    const navigate = useNavigate()
 
     const [updatePost] = useUpdateBookMutation()
 
@@ -19,12 +21,17 @@ const Update = () => {
 
             }
 
-
             const res = await updatePost(updateData).unwrap()
 
             console.log(res)
 
-            
+            Swal.fire({
+                title: "Good job!",
+                text: "You updated the book successfully!",
+                icon: "success"
+            });
+
+            navigate('/all-books')
 
         } catch (error) {
             console.log(error)

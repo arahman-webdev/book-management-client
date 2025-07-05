@@ -28,12 +28,14 @@ import { format } from "date-fns"
 import { CalendarIcon } from "lucide-react"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
+import { useNavigate } from "react-router"
 import Swal from "sweetalert2"
 
 
-export function BorrowBook({ bookId }) {
+export function BorrowBook({ bookId }:any) {
 
     const form = useForm()
+    const navigate = useNavigate()
 
     const [createPost] = useAddBorrowBookMutation()
 
@@ -46,10 +48,11 @@ export function BorrowBook({ bookId }) {
             console.log(res)
             Swal.fire({
                 title: "Good job!",
-                text: "You clicked the button!",
+                text: `Succefully borrowed the book!`,
                 icon: "success"
             });
             setOpen(false)
+            navigate('/borrow-summary')
         } catch (error:any) {
             console.log('rom error console', error)
             const message = error.data.message;
