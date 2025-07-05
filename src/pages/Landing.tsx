@@ -8,9 +8,7 @@ import { TableBook } from '@/providers/TableBook';
 
 const Landing = () => {
 
-    // const {value} = useSelector((state:RootState)=> state.counter)
 
-    // const disPatch = useDispatch()
 
 
     return (

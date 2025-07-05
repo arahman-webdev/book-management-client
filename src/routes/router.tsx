@@ -33,7 +33,7 @@ const router = createBrowserRouter([
             {
                 path: '/update/:bookId',
                 element: <Update />,
-           
+                loader: ({params}) => fetch(`http://localhost:5000/api/books/${params.bookId}`)
             }
         ]
     }
