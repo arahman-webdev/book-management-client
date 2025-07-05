@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 
 
 
-const BookForm = ({ onSubmit, form, book }: any) => {
+const BookForm = ({ onSubmit, form, book }:any) => {
 
 
     return (

@@ -32,7 +32,17 @@ import { useNavigate } from "react-router"
 import Swal from "sweetalert2"
 
 
-export function BorrowBook({ bookId }:any) {
+export function BorrowBook({ bookId }: { bookId: string }) {
+
+
+
+
+    interface IApiError {
+        data: {
+            message: string;
+        };
+    }
+
 
     const form = useForm()
     const navigate = useNavigate()
@@ -41,7 +51,7 @@ export function BorrowBook({ bookId }:any) {
 
     const [open, setOpen] = useState(false)
 
-    const onSubmit = async (data: any) => {
+    const onSubmit = async (data:any) => {
         try {
 
             const res = await createPost({ ...data, book: bookId }).unwrap()
@@ -53,13 +63,13 @@ export function BorrowBook({ bookId }:any) {
             });
             setOpen(false)
             navigate('/borrow-summary')
-        } catch (error:any) {
+        } catch (error: unknown) {
             console.log('rom error console', error)
-            const message = error.data.message;
+            const err = error as IApiError;
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: `${message}`,
+                text: err.data.message || "Something went wrong!",
             });
 
             setOpen(false)

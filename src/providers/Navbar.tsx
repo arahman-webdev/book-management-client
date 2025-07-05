@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, NavLink } from "react-router";
 import { ModeToggle } from "./ModeTogge";
+
  // Fixed import for React Router DOM
 
 const Navbar = () => {
@@ -18,7 +19,9 @@ const Navbar = () => {
   ];
     // bg-[#0D142C]/
   return (
-    <header className={`w-full top-0 fixed z-50 left-0 p-4 shadow-md bg-black/10 backdrop-blur-[4px]  `}>      
+    <header
+    
+    className={`w-full top-0 fixed z-50 left-0 p-4 shadow-md bg-black/10 backdrop-blur-[4px]  `}>      
       <nav className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <div className="text-4xl font-extrabold font-sans">
@@ -64,9 +67,12 @@ const Navbar = () => {
         <ul className="mt-4 space-y-2 px-4">
           {menuItems.map((item, idx) => (
             <li key={idx} className="border-b border-gray-700 py-2">
-              <Link to={item.path} className="block text-white">
+              <NavLink 
+              to={item.path} 
+              onClick={()=>setIsOpen(false)}
+              className="block text-white">
                 {item.label}
-              </Link>
+              </NavLink>
             </li>
           ))}
         </ul>

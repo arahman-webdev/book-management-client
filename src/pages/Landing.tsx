@@ -1,16 +1,8 @@
 
-
 import bannerImg from '../assets/images/hero-banner-home.webp'
 import { TableBook } from '@/providers/TableBook';
 
-
-
-
 const Landing = () => {
-
-
-
-
     return (
         <div className='max-w-7xl mx-auto py-1 px-10 py-16'>
             <div className='flex items-center gap-16'>

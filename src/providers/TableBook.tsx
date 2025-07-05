@@ -10,6 +10,20 @@ import Swal from "sweetalert2";
 
 export function TableBook() {
 
+
+      interface IBook {
+        _id: string;
+        title: string;
+        author: string;
+        genre: string;
+        isbn: string;
+        description: string;
+        copies: number; 
+        available: boolean;
+
+    }
+
+
   const { data, isLoading } = useGetBooksQuery(undefined)
 
 
@@ -50,7 +64,7 @@ export function TableBook() {
   console.log({ data, isLoading })
 
   if (isLoading) {
-    return <div>loading..............................</div>
+    return  <div className="min-h-screen flex flex-col justify-center items-center">loading........</div>
   }
 
   return (
@@ -68,7 +82,7 @@ export function TableBook() {
           </tr>
         </thead>
         <tbody>
-          {data.data.map((book: any, index: number) => (
+          {data.data.map((book:IBook, index: number) => (
             <tr key={index} className="hover:bg-[#12285e] hover:text-white">
               <td className="border border-[#28407c] p-2 text-center">
                 {book.title}

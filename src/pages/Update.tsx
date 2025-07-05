@@ -7,12 +7,24 @@ import Swal from 'sweetalert2';
 
 const Update = () => {
 
+    interface IBook {
+        _id: string;
+        title: string;
+        author: string;
+        genre: string;
+        isbn: string;
+        description: string;
+        copies: number;
+    }
+
+
+
     const form = useForm()
     const navigate = useNavigate()
 
     const [updatePost] = useUpdateBookMutation()
 
-    const onSubmit = async (data: any) => {
+    const onSubmit = async (data: IBook) => {
         try {
             const updateData = {
                 id: data._id,
@@ -39,7 +51,7 @@ const Update = () => {
     }
 
 
-    const { bookId } = useParams<{ bookId: any }>()
+    const { bookId } = useParams<{ bookId: string }>()
 
     const { data: book, isLoading } = useGetSingleBookQuery(bookId)
 
@@ -51,7 +63,7 @@ const Update = () => {
     }, [book, form]);
 
     if (isLoading) {
-        return <div><p>Loading..................</p></div>
+       return <div className="min-h-screen flex flex-col justify-center items-center">loading........</div>
     }
 
     console.log("From book from page", book)

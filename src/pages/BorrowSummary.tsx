@@ -5,10 +5,18 @@ import { useGetBorrowedBookQuery } from "@/app/baseApi";
 const BorrowSummery = () => {
 
 
+    interface IBOOK {
+        book: {
+            title: string;
+            isbn: string;
+        };
+        totalQuantity: number;
+    }
+
     const { data: books, isLoading } = useGetBorrowedBookQuery(undefined)
 
     if (isLoading) {
-        return <div>loading........</div>
+        return <div className="min-h-screen flex flex-col justify-center items-center">loading........</div>
     }
 
     console.log(books)
@@ -28,7 +36,7 @@ const BorrowSummery = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {books.data.map((book: any, index: number) => (
+                        {books.data.map((book:IBOOK, index: number) => (
                             <tr key={index} className="hover:bg-[#12285e]">
                                 <td className="border border-[#28407c] p-2 text-center">{book?.book.title || ""}</td>
                                 <td className="border border-[#28407c] p-2 text-center">{book.book.isbn}</td>
